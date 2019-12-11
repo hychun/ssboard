@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mabatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<mapper namespace="userNS">
+	<select id = "selectBoardArticle" parameterType="int" resultType="BoardArticle">
+		select * from board where no = #{no}
+	</select>
+	
+	<insert id = "insertBoardArticle" parameterType="BoardArticle">
+		insert into board(no, userid, username, password, catetory, title, content, writedate, readcount)
+		       values (#{no}, #{userId}, #{userName}, #{password}, #{catetory}, #{title}, #{content}, #{writedate}, #{readcount}) 
+	</insert>
+
+	<update id = "updateBoardArticle" parameterType="BoardArticle">
+		update board
+		   set category = #{category},
+		       title = #{title},
+		       content = #{content},
+		 where no = #{no}
+	</update>
+</mapper>
